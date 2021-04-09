@@ -1,11 +1,16 @@
 const express = require('express');
 
+const bodyParser = require('body-parser')
+
 const productRoutes = require('./routes/products');
 
 const app = express();
 
-app.use('/products', productRoutes)
+//app.use(bodyParser.urlencoded())
+//app.use(bodyParser.json())
 
 app.use(express.json());
+
+app.use('/products', productRoutes)
 
 app.listen(3000)
