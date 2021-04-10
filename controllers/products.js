@@ -46,4 +46,10 @@ exports.getSpecProduct = (req, res, next) => {
     }
     res.json(foundProduct)
 }
+exports.editProduct = (req, res, next) => {
+
+}
+exports.deleteProduct = (req, res, next) => {
+
+}
 exports.newProducts = productList
