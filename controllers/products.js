@@ -50,6 +50,12 @@ exports.editProduct = (req, res, next) => {
 
 }
 exports.deleteProduct = (req, res, next) => {
+    const newid = req.params.id
+    let newProductList = productList.filter((prod) => {
+        return prod.id != newid
+    })
 
+
+    res.json(newProductList)
 }
 exports.newProducts = productList

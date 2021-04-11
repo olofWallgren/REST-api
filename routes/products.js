@@ -17,7 +17,7 @@ router.get('/spec-product/:id', productController.getSpecProduct)
 router.put('/edit-product/:id', productController.editProduct)
 
 // DELETE /products/delete-product/:id   tar bort produkt
-router.delete('delete-product/:id', productController.deleteProduct)
+router.delete('/delete-product/:id', productController.deleteProduct)
 
 
 module.exports = router;

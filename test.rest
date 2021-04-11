@@ -7,13 +7,17 @@ GET http://localhost:3000/products/view-products
 GET http://localhost:3000/products/spec-product/4
 
 ###
+//lägger till product
 POST http://localhost:3000/products/add-product
 Content-Type: application/json
 
     {
-        "title": "sörens",
+        "title": "delete2",
         "content": "hoppas detta funkar"
         
     }
+###
+DELETE   http://localhost:3000/products/delete-product/3
+Content-Type: application/json
 
    
