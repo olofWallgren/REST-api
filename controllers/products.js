@@ -10,9 +10,11 @@ const productList = [{
 }
 ]
 
+const fs = require('fs')
 
 // Hämtar alla produkter
 exports.getProducts = (req, res, next) => {
+
     res.status(200).json(productList)
 }
 
@@ -20,6 +22,7 @@ exports.getProducts = (req, res, next) => {
 exports.postProducts = (req, res, next) => {
     const title = req.body.title;
     const content = req.body.content;
+
     let newId = 0;
     productList.forEach((prod) => {
         if (prod.id > newId) {
@@ -27,15 +30,27 @@ exports.postProducts = (req, res, next) => {
         }
     })
     newId++
-    console.log(newId)
 
     productList.push({ title: req.body.title, content: req.body.content, id: newId })
-    console.log(req.body)
-    // create post in db
+    const jsndata = JSON.stringify(productList)
+
+    fs.writeFile('./data.json', jsndata, 'utf8', (err) => {
+
+        if (err) {
+            console.log(`Error writing file: ${err}`);
+        } else {
+            console.log(`File is written successfully!`);
+        }
+
+    });
+
     res.status(201).json({
         message: 'product created sucessfully!',
         product: { id: Math.random(5).toString(), title: title, content: content, }
     });
+    // productList.push({ title: req.body.title, content: req.body.content, id: newId })
+
+    // create post in db
 
 }
 

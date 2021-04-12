@@ -10,27 +10,32 @@
   </head>
   <body>
     <header class="header-menu">
+      <button id="add-product-button" class="post-product">
+        Lägg till produkt
+      </button>
+      <h2>Produkter</h2>
       <h1>minn app</h1>
-      <h2>produkter</h2>
     </header>
-    <main class="flex">
-      <div class="form-container">
-        <form class="flex form" action="">
-          <label for="title">Titel</label>
-          <input class="input" type="text" name="title" />
-          <label for="content">Innehåll</label>
-          <input type="text" name="content" />
-          <input type="text" />
-          <input type="text" />
-          <div class="button-container">
-            <button type="submit">Send</button>
-            <button type="submit">Edit</button>
-            <button type="submit">Delete</button>
-          </div>
-        </form>
+    <main>
+      <div class="flex">
+        <div id="formContainer" class="form-container">
+          <form class="flex form" action="">
+            <h2 style="padding-bottom: 1rem">Lägg till produkt</h2>
+            <label for="title">Titel</label>
+            <input class="input" type="text" name="title" />
+            <label for="content">Innehåll</label>
+            <input type="text" name="content" />
+
+            <div class="button-container">
+              <button class="form-button" type="submit">Send</button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div id="productView">
-        <h1>test</h1>
+      <div class="flex">
+        <div id="productView">
+          <h1>test</h1>
+        </div>
       </div>
     </main>
   </body>

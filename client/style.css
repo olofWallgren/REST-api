@@ -1,12 +1,21 @@
 body {
   background-color: white;
   font-family: sans-serif;
+  height: 100%;
+  margin: 0px;
+}
+main {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
 }
 .flex {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex: 1;
 }
 .form-container {
   max-width: 30rem;
@@ -19,7 +28,7 @@ body {
   background-color: white;
   padding-top: 3rem;
   border-radius: 5px;
-  border: 2px solid rgb(100, 110, 255);
+  border: 1px solid rgb(100, 110, 255);
 }
 input {
   max-width: 25rem;
@@ -30,7 +39,6 @@ input {
   border: 2px solid rgb(100, 110, 255);
 }
 button {
-  margin-bottom: 1rem;
   padding: 0.5rem;
   width: 5rem;
   font-family: sans-serif;
@@ -44,6 +52,15 @@ button:hover {
   background-color: rgb(255, 100, 255);
   color: white;
 }
+.form-button {
+  margin-bottom: 1rem;
+}
+.post-product {
+  width: 10rem;
+  font-size: 15px;
+  margin: 0px;
+  background-color: rgb(118, 77, 255);
+}
 .button-container {
   display: flex;
   flex-direction: row;
@@ -56,10 +73,14 @@ button:hover {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  height: 5rem;
+  background-color: rgb(118, 77, 255);
+  color: rgb(255, 100, 255);
 }
 .product-card {
-  border: 2px solid black;
-  border-radius: 1rem;
+  border: 1px solid black;
+  border-radius: 5px;
   min-width: 25rem;
   padding: 1rem;
+  margin-bottom: 1rem;
 }

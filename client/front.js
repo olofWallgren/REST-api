@@ -7,8 +7,24 @@ function initSite() {
     console.log("fungerar fortfarande")
     mapProducts()
     getSpecProducts(4)
-
+    addProdButton()
 }
+
+function addProdButton() {
+
+    document.getElementById("add-product-button").addEventListener("click", displayForm)
+}
+
+function displayForm() {
+    console.log("lägg till prpodukter ")
+    let form = document.getElementById("formContainer")
+    if (form.style.display == "none") {
+        form.style.display = "flex"
+    } else {
+        form.style.display = "none"
+    }
+}
+
 
 /// hämtar alla produkter
 async function getProducts() {
