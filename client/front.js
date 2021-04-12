@@ -1,17 +1,37 @@
+
+
+
 window.addEventListener("load", initSite)
 
 function initSite() {
     console.log("fungerar fortfarande")
-    getProducts()
+    mapProducts()
     getSpecProducts(4)
+
 }
 
 /// hämtar alla produkter
 async function getProducts() {
-    const products = await makeRequest("/products/view-products", "GET")
-    console.log(products)
+    return await makeRequest("/products/view-products", "GET")
 }
 
+
+/// visar all produkter
+async function mapProducts() {
+    const products = await getProducts()
+    products.map((prod) => {
+        document.getElementById("productView").insertAdjacentHTML("afterend", `
+        <div class="product-card">
+        <h3>${prod.title}</h3>
+        <p>${prod.content}</p>
+        <button>Edit</button>
+        <button>Delete</button>
+        </div>`);
+    })
+}
+
+
+/// hämtar specifik produkt
 async function getSpecProducts(id) {
     const specProduct = await makeRequest(`/products/spec-product/${id}`, "GET")
     console.log(specProduct)
@@ -29,6 +49,7 @@ function deleteProducts() {
 
 }
 
+/// gör request
 async function makeRequest(url, method, body) {
 
     const response = await fetch(url, {
@@ -41,3 +62,4 @@ async function makeRequest(url, method, body) {
     const result = await response.json()
     return result
 }
+

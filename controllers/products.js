@@ -11,10 +11,12 @@ const productList = [{
 ]
 
 
+// Hämtar alla produkter
 exports.getProducts = (req, res, next) => {
     res.status(200).json(productList)
 }
 
+// lägger till produkt 
 exports.postProducts = (req, res, next) => {
     const title = req.body.title;
     const content = req.body.content;
@@ -36,6 +38,8 @@ exports.postProducts = (req, res, next) => {
     });
 
 }
+
+// Hämtar specifik produkt
 exports.getSpecProduct = (req, res, next) => {
     const id = req.params.id;
     const foundProduct = productList.find((product) => {
@@ -46,9 +50,30 @@ exports.getSpecProduct = (req, res, next) => {
     }
     res.json(foundProduct)
 }
-exports.editProduct = (req, res, next) => {
 
+// Redigerar en produkt
+exports.editProduct = (req, res, next) => {
+    const id = req.params.id
+    let existingproduct = productList.find((prod) => {
+        return prod.id == id
+    })
+    existingproduct = {
+        title: req.body.title,
+        content: req.body.content,
+        id: existingproduct.id
+    }
+    let filterdProductList = [...productList.filter((prod) => {
+        return prod.id != existingproduct.id
+    })]
+    console.log(filterdProductList)
+    let newProductList = [...filterdProductList, existingproduct]
+
+
+
+    res.status(200).json(newProductList)
 }
+
+// Tar bort en produkt
 exports.deleteProduct = (req, res, next) => {
     const newid = req.params.id
     let newProductList = productList.filter((prod) => {

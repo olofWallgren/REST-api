@@ -51,3 +51,15 @@ button:hover {
   align-items: center;
   width: 100%;
 }
+.header-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.product-card {
+  border: 2px solid black;
+  border-radius: 1rem;
+  min-width: 25rem;
+  padding: 1rem;
+}
