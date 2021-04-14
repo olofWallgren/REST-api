@@ -51,6 +51,7 @@ exports.postProducts = (req, res, next) => {
             res.status(201).json({
                 message: 'product created sucessfully!',
                 product: { id: Math.random(5).toString(), title: title, content: content, }
+
             });
         }
     })

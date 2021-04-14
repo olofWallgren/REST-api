@@ -21,7 +21,7 @@
       </div>
       <div class="flex">
         <div id="formContainer" class="form-container">
-          <form class="flex form" action="/products/add-product" method="POST">
+          <form onsubmit="return false;" class="flex form" method="POST">
             <h2 style="padding-bottom: 1rem">Lägg till produkt</h2>
             <label for="title">Titel</label>
             <input class="input" id="title" type="text" name="title" />
@@ -29,15 +29,15 @@
             <input type="text" id="content" name="content" />
 
             <div class="button-container">
-              <button class="form-button" type="submit">Send</button>
+              <button onclick="addProduct()" class="form-button" type="submit">
+                Send
+              </button>
             </div>
           </form>
         </div>
       </div>
       <div class="flex">
-        <div id="productView">
-          <h1>test</h1>
-        </div>
+        <div id="productView"></div>
       </div>
     </main>
   </body>

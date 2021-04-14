@@ -3,6 +3,8 @@
 
 window.addEventListener("load", initSite)
 
+
+
 function initSite() {
     console.log("fungerar fortfarande")
     mapProducts()
@@ -34,8 +36,19 @@ async function getProducts() {
 
 /// visar all produkter
 async function mapProducts() {
+    console.log("nu körs map")
     const products = await getProducts()
+    document.getElementById("productView").innerHTML = ""
     products.map((prod) => {
+        var div = document.createElement('div');
+        div.className = "product-card"
+        div.innerHTML = `
+        
+        <h3>${prod.title}</h3>
+        <p>${prod.content}</p>
+        <button>Edit</button>
+        <button onclick="deleteProducts(${prod.id}) " id="delete-button">Delete</button>
+     `
         // const DelButton = document.createElement("button")
         // DelButton.innerHTML = "Delete"
         // document.getElementById("productView").appendChild(DelButton)
@@ -45,18 +58,15 @@ async function mapProducts() {
         //     deleteProducts(prod.id)
         // })
 
-        document.getElementById("productView").insertAdjacentHTML("afterend", `
-         <div class="product-card">
-         <h3>${prod.title}</h3>
-         <p>${prod.content}</p>
-         <button>Edit</button>
-         <button id="delete-button">Delete</button>
-         </div>`);
+        document.getElementById("productView").appendChild(div);
 
     })
 }
-
-
+function buttondelete(id) {
+    // let button = document.getElementById("delete-button")
+    // button.addEventListener("click",)
+    console.log(id)
+}
 
 /// hämtar specifik produkt
 async function getSpecProducts(id) {
@@ -64,9 +74,18 @@ async function getSpecProducts(id) {
     console.log(specProduct)
 }
 
-// async function addProduct() {
-//     await makeRequest('/products/add-product', 'POST')
-// }
+async function addProduct() {
+    let title = document.getElementById("title").value;
+    let content = document.getElementById("content").value;
+    let body = {
+        title: title,
+        content: content
+    }
+    objekt = JSON.stringify(body)
+    await makeRequest('/products/add-product', 'POST', objekt)
+    mapProducts()
+    //window.onload()
+}
 
 function editProducts() {
 
