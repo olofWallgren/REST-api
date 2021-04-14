@@ -1,31 +1,35 @@
 GET http://localhost:3000/
 
 ###
+// Hämtar alla produkter
 GET http://localhost:3000/products/view-products
 
 ###
-GET http://localhost:3000/products/spec-product/4
+// Hämtar specifik produkt
+GET http://localhost:3000/products/spec-product/2
 
 ###
-//lägger till product
+// Lägger till product
 POST http://localhost:3000/products/add-product
 Content-Type: application/json
 
     {
-        "title": "olaf",
-        "content": "hoppas detta funkar till json"
+        "title": "Tröja",
+        "content": "riktigt fin stickad orange tröja"
         
     }
 ###
-DELETE   http://localhost:3000/products/delete-product/3
+// Tar bort produkt
+DELETE   http://localhost:3000/products/delete-product/1
 Content-Type: application/json
 
 ###
-PUT  http://localhost:3000/products/edit-product/4 
+// Redigerar en produkt
+PUT  http://localhost:3000/products/edit-product/3 
 Content-Type: application/json
    
     {
-        "title": "klubban",
-        "content": "har vi lyckats editera en produkt"
+        "title": "tim",
+        "content": "nu testar vi en post"
         
     }

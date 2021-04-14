@@ -18,7 +18,7 @@ main {
   flex: 1;
 }
 .form-container {
-  max-width: 30rem;
+  min-width: 30rem;
   width: 100%;
   background-color: white;
   padding: 1rem;
@@ -83,4 +83,11 @@ button:hover {
   min-width: 25rem;
   padding: 1rem;
   margin-bottom: 1rem;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
