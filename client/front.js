@@ -84,7 +84,7 @@ async function addProduct() {
     objekt = JSON.stringify(body)
     await makeRequest('/products/add-product', 'POST', objekt)
     mapProducts()
-    //window.onload()
+
 }
 
 function editProducts() {
