@@ -20,11 +20,19 @@ function addProdButton() {
 function displayForm() {
     console.log("lägg till prpodukter ")
     let form = document.getElementById("formContainer")
-    if (form.style.display == "none") {
-        form.style.display = "flex"
-    } else {
-        form.style.display = "none"
-    }
+
+    form.style.right = "63rem"
+
+}
+function closeForm() {
+    let form = document.getElementById("formContainer")
+    form.style.right = "100rem"
+
+}
+function clearInput() {
+    document.getElementById("title").value = ""
+    document.getElementById("content").value = ""
+
 }
 
 
@@ -84,6 +92,8 @@ async function addProduct() {
     objekt = JSON.stringify(body)
     await makeRequest('/products/add-product', 'POST', objekt)
     mapProducts()
+    clearInput()
+
 
 }
 

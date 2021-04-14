@@ -2,7 +2,7 @@
 
 const fs = require('fs')
 
-// Hämtar alla produkter
+// Hämtar alla produkter från data.json
 exports.getProducts = (req, res, next) => {
     fs.readFile('./data.json', 'utf8', (err, data) => {
         if (err) {
@@ -19,7 +19,7 @@ exports.getProducts = (req, res, next) => {
 
 }
 
-// Lägger till produkt i db
+// Lägger till produkt i data.json
 exports.postProducts = (req, res, next) => {
     const title = req.body.title;
     fs.readFile('./data.json', 'utf8', (err, data) => {
@@ -57,7 +57,7 @@ exports.postProducts = (req, res, next) => {
     })
 }
 
-// Hämtar specifik produkt från db
+// Hämtar specifik produkt data.json
 exports.getSpecProduct = (req, res, next) => {
     fs.readFile('./data.json', 'utf8', (err, data) => {
         if (err) {
@@ -90,7 +90,7 @@ exports.getSpecProduct = (req, res, next) => {
     })
 }
 
-// Redigerar en produkt från db
+// Redigerar en produkt från data.json
 exports.editProduct = (req, res, next) => {
     fs.readFile('./data.json', 'utf8', (err, data) => {
         if (err) {
@@ -133,7 +133,7 @@ exports.editProduct = (req, res, next) => {
     })
 }
 
-// Tar bort en produkt
+// Tar bort en produkt från data.json
 exports.deleteProduct = (req, res, next) => {
     fs.readFile('./data.json', 'utf8', (err, data) => {
         if (err) {

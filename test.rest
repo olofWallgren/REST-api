@@ -33,3 +33,5 @@ Content-Type: application/json
         "content": "nu testar vi en post"
         
     }
+###
+GET  http://localhost:3000/products/go-To-Produkts

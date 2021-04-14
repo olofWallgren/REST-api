@@ -2,7 +2,11 @@ body {
   background-color: white;
   font-family: sans-serif;
   height: 100%;
+  width: 100%;
   margin: 0px;
+}
+html {
+  width: 100%;
 }
 main {
   display: flex;
@@ -19,9 +23,16 @@ main {
 }
 .form-container {
   min-width: 30rem;
-  width: 100%;
+  width: 30rem;
+  height: 20rem;
+
   background-color: white;
   padding: 1rem;
+  position: fixed;
+  top: 9rem;
+  bottom: 0;
+  right: 100rem;
+  transition: right 1s;
 }
 .form {
   width: 100%;
@@ -29,6 +40,7 @@ main {
   padding-top: 3rem;
   border-radius: 5px;
   border: 1px solid rgb(100, 110, 255);
+  /* outline: none; */
 }
 input {
   max-width: 25rem;
@@ -37,6 +49,7 @@ input {
   margin-bottom: 1rem;
   border-radius: 5px;
   border: 2px solid rgb(100, 110, 255);
+  outline: none;
 }
 button {
   padding: 0.5rem;
@@ -47,6 +60,8 @@ button {
   color: rgb(255, 100, 255);
   border-radius: 5px;
   border: 2px solid rgb(255, 100, 255);
+  transition-duration: 0.4s;
+  outline: none;
 }
 button:hover {
   background-color: rgb(255, 100, 255);
@@ -86,8 +101,13 @@ button:hover {
 }
 .main-container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+.product-view {
+  width: 100%;
+  height: 100%;
 }
