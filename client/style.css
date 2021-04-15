@@ -29,11 +29,23 @@ main {
   background-color: white;
   padding: 1rem;
   position: fixed;
-  top: 9rem;
-  bottom: 0;
-  right: 100rem;
-  transition: right 1s;
+  top: 100rem;
+  bottom: 0rem;
+
+  transition: top 1s;
 }
+/* .edit-form-container {
+  min-width: 30rem;
+  width: 30rem;
+  height: 20rem;
+
+  background-color: white;
+  padding: 1rem;
+  position: fixed;
+
+  top: 100rem;
+  transition: top 1s;
+} */
 .form {
   width: 100%;
   background-color: white;
@@ -42,13 +54,33 @@ main {
   border: 1px solid rgb(100, 110, 255);
   /* outline: none; */
 }
-input {
+.input {
   max-width: 25rem;
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 1rem;
   border-radius: 5px;
   border: 2px solid rgb(100, 110, 255);
+  outline: none;
+}
+.editForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(228, 228, 228);
+}
+.borderTop {
+  border-top: 1px solid black;
+}
+
+.editInput {
+  /* max-width: 25rem; */
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid rgb(100, 110, 255);
   outline: none;
 }
 button {
@@ -93,12 +125,26 @@ button:hover {
   color: rgb(255, 100, 255);
 }
 .product-card {
-  border: 1px solid black;
+  border: 1px solid rgb(100, 110, 255);
   border-radius: 5px;
   min-width: 25rem;
-  padding: 1rem;
+  /* padding: 1rem; */
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
 }
+.product-padding {
+  padding: 1rem;
+}
+.product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 .main-container {
   display: flex;
   flex-wrap: wrap;
@@ -110,4 +156,6 @@ button:hover {
 .product-view {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
