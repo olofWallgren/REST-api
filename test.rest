@@ -20,12 +20,12 @@ Content-Type: application/json
     }
 ###
 // Tar bort produkt
-DELETE   http://localhost:3000/products/delete-product/1
+DELETE   http://localhost:3000/products/delete-product/11
 Content-Type: application/json
 
 ###
 // Redigerar en produkt
-PUT  http://localhost:3000/products/edit-product/3 
+PUT  http://localhost:3000/products/edit-product/9 
 Content-Type: application/json
    
     {
@@ -33,5 +33,3 @@ Content-Type: application/json
         "content": "nu testar vi en post"
         
     }
-###
-GET  http://localhost:3000/products/go-To-Produkts
