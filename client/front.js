@@ -17,6 +17,8 @@ async function mapProducts() {
     console.log("nu körs map")
     const products = await getProducts()
     document.getElementById("productView").innerHTML = ""
+    document.getElementById("foundProductview").innerHTML = ""
+
     products.map((prod) => {
         var div = document.createElement('div');
         div.className = "product-card"
@@ -64,8 +66,9 @@ async function serchProducts() {
     getSpecProducts(foundProdukt.id)
     document.getElementById("productView").innerHTML = ""
     var newdiv = document.createElement('div')
-    newdiv.className = "product-card"
-    newdiv.innerHTML = `<div class="product-padding product-info">
+    newdiv.className = "product-card",
+        newdiv.id = "found-product",
+        newdiv.innerHTML = `<div class="product-padding product-info">
    
     <h3>Produkt hittad!</h3>
     <p><b>Produkt:</b> ${foundProdukt.title}</p>
