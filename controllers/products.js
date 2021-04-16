@@ -28,6 +28,7 @@ exports.postProducts = (req, res, next) => {
             const productData = JSON.parse(data)
             const title = req.body.title;
             const content = req.body.content;
+            const price = req.body.price
             let newId = 0;
             productData.forEach((prod) => {
                 if (prod.id > newId) {
@@ -35,7 +36,7 @@ exports.postProducts = (req, res, next) => {
                 }
             })
             newId++
-            productData.push({ title: req.body.title, content: req.body.content, id: newId })
+            productData.push({ title: req.body.title, content: req.body.content, id: newId, price: req.body.price })
             const jsndata = JSON.stringify(productData)
 
             fs.writeFile('./data.json', jsndata, 'utf8', (err) => {
@@ -106,6 +107,7 @@ exports.editProduct = (req, res, next) => {
             let newProduct = {
                 title: req.body.title,
                 content: req.body.content,
+                price: req.body.price,
                 id: existingproduct.id
             }
             let filterdProductList = [...jsnData.filter((prod) => {
@@ -123,7 +125,7 @@ exports.editProduct = (req, res, next) => {
                     console.log(newProduct)
                     res.status(201).json({
                         message: 'product edited sucessfully!',
-                        product: { id: newProduct.id, title: newProduct.title, content: newProduct.content, }
+                        product: { id: newProduct.id, title: newProduct.title, content: newProduct.content, price: newProduct.price }
                     });
                 }
 

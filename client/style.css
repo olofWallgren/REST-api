@@ -34,19 +34,18 @@ main {
 
   transition: top 1s;
 }
-/* .edit-form-container {
+.edit-form-container {
   min-width: 30rem;
   width: 30rem;
   height: 20rem;
-
+  display: none;
   background-color: white;
   padding: 1rem;
   position: fixed;
 
-  top: 100rem;
   transition: top 1s;
-} */
-.form {
+}
+*/ .form {
   width: 100%;
   background-color: white;
   padding-top: 3rem;

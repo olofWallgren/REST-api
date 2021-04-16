@@ -11,6 +11,7 @@ function initSite() {
     // getSpecProducts(4)
     addProdButton()
 }
+let productID = 0;
 mapProducts()
 function addProdButton() {
 
@@ -64,29 +65,18 @@ async function mapProducts() {
         
         <p><b>Innehåll:</b> ${prod.content}</p>
         </div>
+        <div>
+        
+        <p><b>Pris:</b> ${prod.price}</p>
+        </div>
         </div>
         <div class="product-padding">
         
         <button onclick="deleteProducts(${prod.id}) " id="delete-button">Delete</button>
+        <button onclick="getProductID(${prod.id}) " id="edit-button">Edit</button>
         </div>
 
-        <div id="edit-forms" class="editForm borderTop" >
-        <h3>Ändra produkt</h3>
-        <form id="edit-form" class="editForm" onsubmit="return false;" method="PUT">
-        <label for="title">Titel</label>
-         <input class="editInput" id="edit-title" type="text" name="title" />
-         <label for="content">Innehåll</label>
-         <input class="editInput" type="text" id="edit-content" name="content" /> 
-
-         <button
-         onclick="editProducts(${prod.id})"
-         class="form-button"
-         type="submit"
-       >
-         Ändra
-       </button>
-         </form>
-         </div>
+        
         
      `
         document.getElementById("productView").appendChild(div);
@@ -129,9 +119,11 @@ async function serchProducts() {
 async function addProduct() {
     let title = document.getElementById("title").value;
     let content = document.getElementById("content").value;
+    let price = document.getElementById("pris").value;
     let body = {
         title: title,
-        content: content
+        content: content,
+        price: price
     }
     objekt = JSON.stringify(body)
     await makeRequest('/products/add-product', 'POST', objekt)
@@ -141,18 +133,42 @@ async function addProduct() {
 
 }
 // redigera produkt
-async function editProducts(id) {
-    let editTitle = document.getElementById("edit-title").value;
-    let editContent = document.getElementById("edit-content").value;
-    let newBody = {
-        title: editTitle,
-        content: editContent
-    }
-    console.log(newBody)
-    newObjekt = JSON.stringify(newBody)
-    await makeRequest(`/products/edit-product/${id}`, "PUT", newObjekt)
+async function editProducts(id, body) {
+    await makeRequest(`/products/edit-product/${id}`, "PUT", body)
     mapProducts()
     clearInput()
+}
+function getProductID(id) {
+    //open form
+    productID = id
+    const form = document.getElementById("editFormContainer")
+    form.style.display = "flex"
+    console.log(id)
+
+
+}
+function closeEditForm() {
+    const form = document.getElementById("editFormContainer")
+    form.style.display = "none"
+}
+async function getValuesFromForm() {
+    let newTitle = document.getElementById("newEdit-title").value;
+    let newContent = document.getElementById("newEdit-content").value;
+    let newPrice = document.getElementById("newEdit-price").value;
+    let newid = productID
+    let products = await getProducts()
+    let foundProduct = products.find((prod) => {
+        return prod.id == newid
+    })
+    let newProduct = {
+        title: newTitle ? newTitle : foundProduct.title,
+        content: newContent ? newContent : foundProduct.content,
+        price: newPrice ? newPrice : foundProduct.price,
+        id: foundProduct.id
+    }
+    let newObjekt = JSON.stringify(newProduct)
+    editProducts(newProduct.id, newObjekt)
+
 }
 
 // Ta bort produkt
