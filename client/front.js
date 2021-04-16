@@ -7,12 +7,12 @@ window.addEventListener("load", initSite)
 
 function initSite() {
     console.log("fungerar fortfarande")
-    mapProducts()
+
     // getSpecProducts(4)
     addProdButton()
 }
 let productID = 0;
-mapProducts()
+
 function addProdButton() {
 
     document.getElementById("add-product-button").addEventListener("click", displayForm)
@@ -31,20 +31,17 @@ function closeForm() {
 
 }
 
-
-
 function clearInput() {
     document.getElementById("title").value = ""
     document.getElementById("content").value = ""
+    document.getElementById("pris").value = ""
 
 }
-
 
 /// hämtar alla produkter
 async function getProducts() {
     return await makeRequest("/products/view-products", "GET")
 }
-
 
 /// visar all produkter
 async function mapProducts() {
@@ -83,22 +80,18 @@ async function mapProducts() {
 
     })
 }
-function buttondelete(id) {
-    // let button = document.getElementById("delete-button")
-    // button.addEventListener("click",)
-    console.log(id)
-}
 
-/// hämtar specifik produkt
+
+
+/// gör ett request på en specifik produkt
 async function getSpecProducts(id) {
 
     const specProduct = await makeRequest(`/products/spec-product/${id}`, "GET")
     console.log(JSON.stringify(specProduct.title))
-    // var newdiv = document.createElement('div')
-    // newdiv.innerHTML = `<h3>${specProduct.title}</h3>`
-    // document.getElementById("productView").appendChild(newdiv);
+
 
 }
+// söker efter produkter och visar produkten
 async function serchProducts() {
     let products = await getProducts()
     let prodName = document.getElementById("prodTitle").value
@@ -110,7 +103,13 @@ async function serchProducts() {
     getSpecProducts(foundProdukt.id)
     document.getElementById("productView").innerHTML = ""
     var newdiv = document.createElement('div')
-    newdiv.innerHTML = `<h3>${foundProdukt.title}</h3><h3>${foundProdukt.content}</h3>`
+    newdiv.className = "product-card"
+    newdiv.innerHTML = `<div class="product-padding product-info">
+   
+    <h3>Produkt hittad!</h3>
+    <p><b>Produkt:</b> ${foundProdukt.title}</p>
+    <p><b> Title:</b> ${foundProdukt.content}</p>
+    <p><b> Pris:</b> ${foundProdukt.price}</p></div>`
     document.getElementById("foundProductview").appendChild(newdiv);
 
 
@@ -138,19 +137,26 @@ async function editProducts(id, body) {
     mapProducts()
     clearInput()
 }
+// hämtar if från produkten och öpnar edit form
 function getProductID(id) {
     //open form
     productID = id
     const form = document.getElementById("editFormContainer")
-    form.style.display = "flex"
+    form.style.left = "80rem"
     console.log(id)
 
 
 }
+function openEditForm() {
+    const form = document.getElementById("editFormContainer")
+    form.style.left = "80rem"
+}
+// stänger editform
 function closeEditForm() {
     const form = document.getElementById("editFormContainer")
-    form.style.display = "none"
+    form.style.left = "150rem"
 }
+// hämtar värden från edit form 
 async function getValuesFromForm() {
     let newTitle = document.getElementById("newEdit-title").value;
     let newContent = document.getElementById("newEdit-content").value;
@@ -190,4 +196,9 @@ async function makeRequest(url, method, body) {
     const result = await response.json()
     return result
 }
+function backFunction() {
+    document.getElementById("productView").innerHTML = ""
 
+    mapProducts()
+
+}

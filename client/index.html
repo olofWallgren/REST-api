@@ -13,7 +13,13 @@
       <button id="add-product-button" class="post-product">
         Lägg till produkt
       </button>
-      <!-- <button id="add-product-button" class="post-product">Produkter</button> -->
+      <button
+        onclick="mapProducts()"
+        id="add-product-button"
+        class="post-product"
+      >
+        Produkter
+      </button>
       <form onsubmit="return false;" method="GET">
         <input
           id="prodTitle"
@@ -50,7 +56,7 @@
         <!-- edit form -->
         <div id="editFormContainer" class="edit-form-container">
           <form onsubmit="return false;" class="flex form" method="PUT">
-            <h2 style="padding-bottom: 1rem">Ändra en produkt</h2>
+            <h2 style="padding-bottom: 1rem">Ändra produkten</h2>
             <label for="title">Titel</label>
             <input class="input" id="newEdit-title" type="text" name="title" />
             <label for="content">Innehåll</label>

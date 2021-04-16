@@ -78,15 +78,7 @@ exports.getSpecProduct = (req, res, next) => {
                     product: foundProduct
                 });
             }
-            // if (!foundProduct) {
-            //     res.json({ "Error": "produkten finns ej" })
-            // }
-            // console.log("produkten hittades med stor framgång")
-            // res.json(foundProduct)
-            // res.status(201).json({
-            //     message: 'Product found sucessfully!',
-            //     product: { id: id, }
-            // });
+
         }
     })
 }
