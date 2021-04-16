@@ -1,48 +1,16 @@
 
-
-
 window.addEventListener("load", initSite)
 
-
-
 function initSite() {
-    console.log("fungerar fortfarande")
-
-    // getSpecProducts(4)
+    console.log("Sidan är igång!")
     addProdButton()
 }
 let productID = 0;
-
-function addProdButton() {
-
-    document.getElementById("add-product-button").addEventListener("click", displayForm)
-}
-
-function displayForm() {
-    console.log("lägg till prpodukter ")
-    let form = document.getElementById("formContainer")
-
-    form.style.top = "7rem"
-
-}
-function closeForm() {
-    let form = document.getElementById("formContainer")
-    form.style.top = "100rem"
-
-}
-
-function clearInput() {
-    document.getElementById("title").value = ""
-    document.getElementById("content").value = ""
-    document.getElementById("pris").value = ""
-
-}
 
 /// hämtar alla produkter
 async function getProducts() {
     return await makeRequest("/products/view-products", "GET")
 }
-
 /// visar all produkter
 async function mapProducts() {
     console.log("nu körs map")
@@ -71,25 +39,17 @@ async function mapProducts() {
         
         <button onclick="deleteProducts(${prod.id}) " id="delete-button">Delete</button>
         <button onclick="getProductID(${prod.id}) " id="edit-button">Edit</button>
-        </div>
-
-        
-        
+        </div>       
      `
         document.getElementById("productView").appendChild(div);
 
     })
 }
-
-
-
 /// gör ett request på en specifik produkt
 async function getSpecProducts(id) {
 
     const specProduct = await makeRequest(`/products/spec-product/${id}`, "GET")
     console.log(JSON.stringify(specProduct.title))
-
-
 }
 // söker efter produkter och visar produkten
 async function serchProducts() {
@@ -176,13 +136,11 @@ async function getValuesFromForm() {
     editProducts(newProduct.id, newObjekt)
 
 }
-
 // Ta bort produkt
 async function deleteProducts(id) {
     await makeRequest(`/products/delete-product/${id}`, "DELETE")
     mapProducts()
 }
-
 /// gör request
 async function makeRequest(url, method, body) {
 
@@ -200,5 +158,27 @@ function backFunction() {
     document.getElementById("productView").innerHTML = ""
 
     mapProducts()
+
+}
+function addProdButton() {
+
+    document.getElementById("add-product-button").addEventListener("click", displayForm)
+}
+function displayForm() {
+    console.log("lägg till prpodukter ")
+    let form = document.getElementById("formContainer")
+
+    form.style.top = "7rem"
+
+}
+function closeForm() {
+    let form = document.getElementById("formContainer")
+    form.style.top = "100rem"
+
+}
+function clearInput() {
+    document.getElementById("title").value = ""
+    document.getElementById("content").value = ""
+    document.getElementById("pris").value = ""
 
 }

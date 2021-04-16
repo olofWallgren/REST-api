@@ -10,10 +10,7 @@ exports.getProducts = (req, res, next) => {
         } else {
             const jsnData = JSON.parse(data)
             res.status(200).json(jsnData)
-            // res.status(201).json({
-            //     message: 'Products found sucessfully!',
-            //     productList: jsnData
-            // });
+
         }
     })
 
@@ -65,7 +62,6 @@ exports.getSpecProduct = (req, res, next) => {
             console.log(`error reading file from disk${err}`);
         } else {
             const jsnData = JSON.parse(data);
-            ///läs från db
             const id = req.params.id;
             const foundProduct = jsnData.find((product) => {
                 return product.id == id
