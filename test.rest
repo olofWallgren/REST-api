@@ -6,7 +6,7 @@ GET http://localhost:3000/products/view-products
 
 ###
 // Hämtar specifik produkt
-GET http://localhost:3000/products/spec-product/2
+GET http://localhost:3000/products/spec-product/11
 
 ###
 // Lägger till product
@@ -15,21 +15,23 @@ Content-Type: application/json
 
     {
         "title": "Tröja",
-        "content": "riktigt fin stickad orange tröja"
+        "content": "riktigt fin stickad orange tröja",
+        "price":"250"
         
     }
 ###
 // Tar bort produkt
-DELETE   http://localhost:3000/products/delete-product/11
+DELETE   http://localhost:3000/products/delete-product/10
 Content-Type: application/json
 
 ###
 // Redigerar en produkt
-PUT  http://localhost:3000/products/edit-product/9 
+PUT  http://localhost:3000/products/edit-product/13 
 Content-Type: application/json
    
     {
-        "title": "tim",
-        "content": "nu testar vi en post"
+        "title": "reqtest",
+        "content": "nu testar vi en post",
+        "price":"300"
         
     }
