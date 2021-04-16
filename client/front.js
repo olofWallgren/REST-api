@@ -4,6 +4,7 @@ window.addEventListener("load", initSite)
 function initSite() {
     console.log("Sidan är igång!")
     addProdButton()
+    //mapProducts()
 }
 let productID = 0;
 
