@@ -124,6 +124,12 @@ button:hover {
   background-color: rgb(118, 77, 255);
   color: rgb(255, 100, 255);
 }
+.serch-input {
+  padding: 0.5rem;
+
+  border-radius: 5px;
+  border: 1px solid rgb(100, 110, 255);
+}
 .product-card {
   border: 1px solid rgb(100, 110, 255);
   border-radius: 5px;

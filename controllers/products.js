@@ -21,12 +21,12 @@ exports.getProducts = (req, res, next) => {
 
 // Lägger till produkt i data.json
 exports.postProducts = (req, res, next) => {
-    const title = req.body.title;
     fs.readFile('./data.json', 'utf8', (err, data) => {
         if (err) {
             console.log(`cant read file${err}`)
         } else {
             const productData = JSON.parse(data)
+            const title = req.body.title;
             const content = req.body.content;
             let newId = 0;
             productData.forEach((prod) => {
@@ -103,7 +103,7 @@ exports.editProduct = (req, res, next) => {
                 return prod.id == id
             })
             console.log(existingproduct)
-            existingproduct = {
+            let newProduct = {
                 title: req.body.title,
                 content: req.body.content,
                 id: existingproduct.id
@@ -112,7 +112,7 @@ exports.editProduct = (req, res, next) => {
                 return prod.id != existingproduct.id
             })]
 
-            let newProductList = [...filterdProductList, existingproduct]
+            let newProductList = [...filterdProductList, newProduct]
             const newJsnData = JSON.stringify(newProductList)
             fs.writeFile('./data.json', newJsnData, 'utf8', (err) => {
 
@@ -120,9 +120,10 @@ exports.editProduct = (req, res, next) => {
                     console.log(`Error writing file: ${err}`);
                 } else {
                     console.log(`File is written successfully!`);
+                    console.log(newProduct)
                     res.status(201).json({
                         message: 'product edited sucessfully!',
-                        product: { id: existingproduct.id, title: existingproduct.title, content: existingproduct.content, }
+                        product: { id: newProduct.id, title: newProduct.title, content: newProduct.content, }
                     });
                 }
 

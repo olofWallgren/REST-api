@@ -13,7 +13,16 @@
       <button id="add-product-button" class="post-product">
         Lägg till produkt
       </button>
-      <button id="add-product-button" class="post-product">Produkter</button>
+      <!-- <button id="add-product-button" class="post-product">Produkter</button> -->
+      <form onsubmit="return false;" method="GET">
+        <input
+          id="prodTitle"
+          class="serch-input"
+          type="text"
+          name="prodTitle"
+        />
+        <button onclick="serchProducts()" class="post-product">Sök</button>
+      </form>
     </header>
     <main class="main-container">
       <div>
@@ -59,6 +68,7 @@
         </div> -->
       </div>
       <div class="flex">
+        <div class="product-view" id="foundProductview"></div>
         <div class="product-view" id="productView"></div>
       </div>
     </main>
