@@ -2,7 +2,7 @@
 
 const fs = require('fs')
 
-// Hämtar alla produkter
+// Hämtar alla produkter från data.json
 exports.getProducts = (req, res, next) => {
     fs.readFile('./data.json', 'utf8', (err, data) => {
         if (err) {
@@ -19,15 +19,16 @@ exports.getProducts = (req, res, next) => {
 
 }
 
-// Lägger till produkt i db
+// Lägger till produkt i data.json
 exports.postProducts = (req, res, next) => {
-    const title = req.body.title;
     fs.readFile('./data.json', 'utf8', (err, data) => {
         if (err) {
             console.log(`cant read file${err}`)
         } else {
             const productData = JSON.parse(data)
+            const title = req.body.title;
             const content = req.body.content;
+            const price = req.body.price
             let newId = 0;
             productData.forEach((prod) => {
                 if (prod.id > newId) {
@@ -35,7 +36,7 @@ exports.postProducts = (req, res, next) => {
                 }
             })
             newId++
-            productData.push({ title: req.body.title, content: req.body.content, id: newId })
+            productData.push({ title: req.body.title, content: req.body.content, id: newId, price: req.body.price })
             const jsndata = JSON.stringify(productData)
 
             fs.writeFile('./data.json', jsndata, 'utf8', (err) => {
@@ -57,7 +58,7 @@ exports.postProducts = (req, res, next) => {
     })
 }
 
-// Hämtar specifik produkt från db
+// Hämtar specifik produkt data.json
 exports.getSpecProduct = (req, res, next) => {
     fs.readFile('./data.json', 'utf8', (err, data) => {
         if (err) {
@@ -77,20 +78,12 @@ exports.getSpecProduct = (req, res, next) => {
                     product: foundProduct
                 });
             }
-            // if (!foundProduct) {
-            //     res.json({ "Error": "produkten finns ej" })
-            // }
-            // console.log("produkten hittades med stor framgång")
-            // res.json(foundProduct)
-            // res.status(201).json({
-            //     message: 'Product found sucessfully!',
-            //     product: { id: id, }
-            // });
+
         }
     })
 }
 
-// Redigerar en produkt från db
+// Redigerar en produkt från data.json
 exports.editProduct = (req, res, next) => {
     fs.readFile('./data.json', 'utf8', (err, data) => {
         if (err) {
@@ -103,16 +96,17 @@ exports.editProduct = (req, res, next) => {
                 return prod.id == id
             })
             console.log(existingproduct)
-            existingproduct = {
+            let newProduct = {
                 title: req.body.title,
                 content: req.body.content,
+                price: req.body.price,
                 id: existingproduct.id
             }
             let filterdProductList = [...jsnData.filter((prod) => {
                 return prod.id != existingproduct.id
             })]
 
-            let newProductList = [...filterdProductList, existingproduct]
+            let newProductList = [...filterdProductList, newProduct]
             const newJsnData = JSON.stringify(newProductList)
             fs.writeFile('./data.json', newJsnData, 'utf8', (err) => {
 
@@ -120,9 +114,10 @@ exports.editProduct = (req, res, next) => {
                     console.log(`Error writing file: ${err}`);
                 } else {
                     console.log(`File is written successfully!`);
+                    console.log(newProduct)
                     res.status(201).json({
                         message: 'product edited sucessfully!',
-                        product: { id: existingproduct.id, title: existingproduct.title, content: existingproduct.content, }
+                        product: { id: newProduct.id, title: newProduct.title, content: newProduct.content, price: newProduct.price }
                     });
                 }
 
@@ -133,7 +128,7 @@ exports.editProduct = (req, res, next) => {
     })
 }
 
-// Tar bort en produkt
+// Tar bort en produkt från data.json
 exports.deleteProduct = (req, res, next) => {
     fs.readFile('./data.json', 'utf8', (err, data) => {
         if (err) {

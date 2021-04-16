@@ -13,7 +13,22 @@
       <button id="add-product-button" class="post-product">
         Lägg till produkt
       </button>
-      <button id="add-product-button" class="post-product">Produkter</button>
+      <button
+        onclick="mapProducts()"
+        id="add-product-button"
+        class="post-product"
+      >
+        Produkter
+      </button>
+      <form onsubmit="return false;" method="GET">
+        <input
+          id="prodTitle"
+          class="serch-input"
+          type="text"
+          name="prodTitle"
+        />
+        <button onclick="serchProducts()" class="post-product">Sök</button>
+      </form>
     </header>
     <main class="main-container">
       <div>
@@ -26,18 +41,52 @@
             <label for="title">Titel</label>
             <input class="input" id="title" type="text" name="title" />
             <label for="content">Innehåll</label>
-            <input type="text" id="content" name="content" />
+            <input class="input" type="text" id="content" name="content" />
+            <label for="pris">Pris</label>
+            <input class="input" type="text" id="pris" name="pris" />
 
             <div class="button-container">
               <button onclick="addProduct()" class="form-button" type="submit">
                 Send
+              </button>
+              <button onclick="closeForm()" class="form-button">Close</button>
+            </div>
+          </form>
+        </div>
+        <!-- edit form -->
+        <div id="editFormContainer" class="edit-form-container">
+          <form onsubmit="return false;" class="flex form" method="PUT">
+            <h2 style="padding-bottom: 1rem">Ändra produkten</h2>
+            <label for="title">Titel</label>
+            <input class="input" id="newEdit-title" type="text" name="title" />
+            <label for="content">Innehåll</label>
+            <input
+              class="input"
+              type="text"
+              id="newEdit-content"
+              name="content"
+            />
+            <label for="price">pris</label>
+            <input class="input" type="text" id="newEdit-price" name="price" />
+
+            <div class="button-container">
+              <button
+                onclick="getValuesFromForm()"
+                class="form-button"
+                type="submit"
+              >
+                Send
+              </button>
+              <button onclick="closeEditForm()" class="form-button">
+                Close
               </button>
             </div>
           </form>
         </div>
       </div>
       <div class="flex">
-        <div id="productView"></div>
+        <div class="product-view" id="foundProductview"></div>
+        <div class="product-view" id="productView"></div>
       </div>
     </main>
   </body>

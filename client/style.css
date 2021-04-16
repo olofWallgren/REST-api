@@ -2,7 +2,11 @@ body {
   background-color: white;
   font-family: sans-serif;
   height: 100%;
+  width: 100%;
   margin: 0px;
+}
+html {
+  width: 100%;
 }
 main {
   display: flex;
@@ -19,24 +23,67 @@ main {
 }
 .form-container {
   min-width: 30rem;
-  width: 100%;
+  width: 30rem;
+  height: 20rem;
   background-color: white;
   padding: 1rem;
+  position: fixed;
+  top: 100rem;
+  bottom: 0rem;
+  right: 80rem;
+  border: 1px solid rgb(100, 110, 255);
+  border-radius: 5px;
+  transition: top 1s;
 }
-.form {
+.edit-form-container {
+  min-width: 30rem;
+  width: 30rem;
+  height: 20rem;
+  background-color: white;
+  padding: 1rem;
+  position: fixed;
+  top: 8rem;
+  left: 150rem;
+  transition: left 1s;
+  border: 1px solid rgb(100, 110, 255);
+  border-radius: 5px;
+}
+*/ .form {
   width: 100%;
   background-color: white;
   padding-top: 3rem;
   border-radius: 5px;
   border: 1px solid rgb(100, 110, 255);
+  /* outline: none; */
 }
-input {
+.input {
   max-width: 25rem;
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 1rem;
   border-radius: 5px;
   border: 2px solid rgb(100, 110, 255);
+  outline: none;
+}
+.editForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(228, 228, 228);
+}
+.borderTop {
+  border-top: 1px solid black;
+}
+
+.editInput {
+  /* max-width: 25rem; */
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid rgb(100, 110, 255);
+  outline: none;
 }
 button {
   padding: 0.5rem;
@@ -47,6 +94,8 @@ button {
   color: rgb(255, 100, 255);
   border-radius: 5px;
   border: 2px solid rgb(255, 100, 255);
+  transition-duration: 0.4s;
+  outline: none;
 }
 button:hover {
   background-color: rgb(255, 100, 255);
@@ -77,17 +126,44 @@ button:hover {
   background-color: rgb(118, 77, 255);
   color: rgb(255, 100, 255);
 }
+.serch-input {
+  padding: 0.5rem;
+
+  border-radius: 5px;
+  border: 1px solid rgb(100, 110, 255);
+}
 .product-card {
-  border: 1px solid black;
+  border: 1px solid rgb(100, 110, 255);
   border-radius: 5px;
   min-width: 25rem;
-  padding: 1rem;
+  /* padding: 1rem; */
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
 }
+.product-padding {
+  padding: 1rem;
+}
+.product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 .main-container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+.product-view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }

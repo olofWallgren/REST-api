@@ -4,7 +4,7 @@ const productController = require('../controllers/products')
 
 const router = express.Router();
 
-// GET /products/view-products   visarr alla produkter
+// GET /products/view-products   visar alla produkter
 router.get('/view-products', productController.getProducts);
 
 // POST /products/add-products    lägger till produkt
